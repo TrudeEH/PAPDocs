@@ -18,6 +18,7 @@ INTRO
     - [Xorg](#xorg)
     - [GUI Shell / WM (Gestor de janelas)](#gui-shell--wm-gestor-de-janelas)
     - [X Clients](#x-clients)
+    - [Ambiente de trabalho](#ambiente-de-trabalho)
   - [Componentes do XPrism](#componentes-do-xprism)
     - [DWM (Dynamic Window Manager)](#dwm-dynamic-window-manager)
     - [ST (Simple Terminal)](#st-simple-terminal)
@@ -104,10 +105,22 @@ Explanation
 ### [Kernel](#o-que-é-linux)
 
 ### Xorg
+Xorg é um programa que permite a interação entre os utilizadores e os programas com interface gráfica através de um monitor, teclado e rato. Xorg é baseado no sistema X, que é um padrão para a comunicação entre aplicações gráficas e servidores de janelas.
 
+Xorg é o padrão em sistemas Linux atualmente, e é compatível com muitas aplicações e gestores de janelas diferentes. No entanto, Xorg também tem algumas desvantagens, como a complexidade da configuração e a falta de suporte para alguns recursos modernos como o Wayland.
+
+No futuro, o Xorg será totalmente substituído pelo Wayland, mas por enquanto, o Xorg oferece maior compatíbilidade com hardware mais antigo e servidores.
 ### GUI Shell / WM (Gestor de janelas)
+Um gestor de janelas é um software que controla a posição e a aparência das janelas. O gestor de janelas permite ao utilizador mover, redimensionar, fechar janelas e executar outros comandos. O gestor de janelas também pode fornecer efeitos visuais como transparência, sombras, animações e miniaturas.
+
+O XPrism inclui um gestor de janelas (DWM) e um compositor, responsavél pelas sombras, transparência e aparência das janelas. O DWM controla cores e posições automáticas.
 
 ### X Clients
+
+### Ambiente de trabalho
+Um Desktop Environment (Ambiente de trabalho - DE) é o conjunto das tecnologias anteriores, o que inclui um gestor de janelas, mas também outros componentes como painéis, menus, ícones, widgets e aplicações integradas, etc... e tem como objetivo oferecer uma interface gráfica completa.
+
+No caso do XPrism, incluí o wallpaper padrão e todos os utilitários e componentes presentes no repositório.
 
 ## Componentes do XPrism
 
