@@ -9,7 +9,6 @@ Se possível, é recomendado que o leitor utilize as funções de pesquisa (ou o
 Obrigado, 
 José Simões (_aka TrudeEH_)
 
-
 ## Introdução
 XPrism é um [ambiente de trabalho](#ambiente-de-trabalho) de [código aberto](#open-source--gpl-3) para [Linux](#o-que-é-linux), projetado com desempenho e personalização em mente.
 Em vez de utilizar janelas flutuantes, XPrism organiza-as automaticamente, o que permite utilizar o sistema exclusivamente com o teclado, de forma a melhorar a produtividade. XPrism suporta qualquer equipamento capaz de iniciar o [Kernel Linux](#o-que-é-linux), incluindo ARM e processadores x86 (32 bits). A leveza do ambiente torna-o ideal para servidores, que podem ter recursos limitados para a DE.
@@ -34,12 +33,15 @@ Em vez de utilizar janelas flutuantes, XPrism organiza-as automaticamente, o que
   - [Componentes do XPrism](#componentes-do-xprism)
     - [DWM (Dynamic Window Manager)](#dwm-dynamic-window-manager)
     - [ST (Simple Terminal)](#st-simple-terminal)
-    - [Dmenu ()](#dmenu-)
-    - [Slstatus ()](#slstatus-)
-    - [Slock ()](#slock-)
+    - [Dmenu](#dmenu)
+    - [Slstatus](#slstatus)
+    - [Slock](#slock)
   - [Componentes adicionais](#componentes-adicionais)
     - [Nitrogen (Wallpaper Setter)](#nitrogen-wallpaper-setter)
-    - [TrudeVim (Configuração de Neovim personalizada)](#trudevim-configuração-de-neovim-personalizada)
+    - [TrudeVim](#trudevim)
+      - [Introdução](#introdução-1)
+      - [Funções](#funções)
+      - [Instalação](#instalação)
     - [GitHub / Wiki](#github--wiki)
     - [XPrism Web](#xprism-web)
       - [Construção do site](#construção-do-site)
@@ -58,14 +60,14 @@ Em vez de utilizar janelas flutuantes, XPrism organiza-as automaticamente, o que
     - [No servidor](#no-servidor)
     - [No computador pessoal](#no-computador-pessoal)
   - [Guia de utilização](#guia-de-utilização)
-    - [Instalação](#instalação)
+    - [Instalação](#instalação-1)
     - [Workflow](#workflow)
       - [Tags](#tags)
       - [Layout](#layout)
         - [Master/Stack layout \[\]=](#masterstack-layout-)
         - [Floating layout \>\<\>](#floating-layout-)
         - [Grid layout \[\]=](#grid-layout-)
-        - [FullScreen layout \[M\]](#fullscreen-layout-m)
+        - [FullScreen layout \[\]](#fullscreen-layout-)
       - [System bar](#system-bar)
         - [Status bar](#status-bar)
         - [System tray](#system-tray)
@@ -157,25 +159,69 @@ O ST implementa a maior parte das sequências de escape VT10X, que são códigos
 
 A plugins age de forma similar ao DWM, contém funções opcionais que também podem ser configuradas no ficheiro config.def.h.
 
-### Dmenu ()
+### Dmenu
 Dmenu é um menu dinâmico e leve para X. Ele tem como objetivo facilitar a pesquisa no sistema, lançar aplicações, executar comandos e *scripts* personalizados. O Dmenu substitui um menu tradicional no XPrism.
 
-Dmenu lê texto da entrada padrão (stdin) e cria um menu com um item por cada linha. O utilizador pode então selecionar um item, com as teclas de seta ou por escrever uma parte do nome, e a linha é impressa na saída padrão (stdout). Dmenu_run é um script padrão do Dmenu que permite usá-lo como um lançador de programas.
+Dmenu lê texto da entrada padrão (`stdin`) e cria um menu com um item por cada linha. O utilizador pode então selecionar um item, com as teclas de seta ou por escrever uma parte do nome, e a linha é impressa na saída padrão (stdout). Dmenu_run é um script padrão do Dmenu que permite usá-lo como um lançador de programas.
 
 Dmenu usa a biblioteca Xlib para se comunicar com o servidor X e a biblioteca Xft para desenhar as fontes na tela. Ele também usa a função `popen` da biblioteca padrão C para executar os comandos selecionados pelo utilizador.
 
-### Slstatus ()
-
-### Slock ()
-
+### Slstatus
+Slstatus é um monitor de status do sistema para gestores de janelas que usam `WM_NAME` ou `stdin` para preencher a barra de status.
+Slstatus lê os dados de diferentes fontes, como arquivos no sistema, comandos ou bibliotecas, e formata-os de acordo com as funções e argumentos definidos no arquivo config.def.h. Em seguida, ele atualiza o `WM_NAME` da janela raiz do X11 ou escreve na saída padrão a cada intervalo especificado na configuração.
+### Slock
+Slock é um bloqueador de ecrã simples para o X11 que segue a filosofia suckless. Ele bloqueia o ecrã e pede a senha do utilizador atual para desbloquear.
+Slock utiliza a biblioteca *Xlib* para criar uma janela que cobre o ecrã inteiro e captura todos os eventos do teclado e do rato. Ele usa a função `crypt(3)` para verificar se a senha introduzida pelo utilizador corresponde à senha guardada no sistema. Ele também usa o *Xrandr* para suportar vários monitores e o *DPMS* para desligar o monitor após um tempo de inatividade.
 ## Componentes adicionais
 
 ### Nitrogen (Wallpaper Setter)
+Nitrogen é um programa que permite mudar o papel de parede do ambiente de trabalho. Ele é rápido e leve, e usa a biblioteca GTK2 para a interface gráfica. Ele suporta *Multihead* e *Xinerama*, que são recursos para lidar com múltiplos monitores. Ele também tem um modo de memória que guarda o último papel de parede usado e um modo de linha de comando.
+### TrudeVim
+TrudeVim é um editor de texto altamente extensível para Linux, configurado a partir do NeoVim. Suporta *linting*, servidores de linguagens de programação, autocompletação de código, *snippets* personalizados, entre outras funções. Por padrão trás o servidor `tsserver` e *snippets* para TypeScript e JavaScript, e `lua_ls` para lua.
+Este projeto não faz parte do repositório XPrism por ser considerado um componente adicional.
+TrudeVim também está disponível para MacOS, Windows e qualquer distribuição Linux.
 
-### TrudeVim (Configuração de Neovim personalizada)
+#### Introdução
+Por padrão, XPrism usa as teclas de atalho do Vim para facilitar a navegação e manipulação de janelas. Por exemplo: `h`, `j`, `k` e `l` substituem as setas no teclado. Estes e outros atalhos não só permitem navegar mais rápido, executar mais funções com o teclado (todas as teclas podem ser usadas como atalho), mas também são mais ergonômicos para utilizadores que praticam *touch typing* (escrever no teclado com as duas mãos, apenas com recurso à memória muscular.) Estes atalhos podem ser alterados, no entanto, para acompanhar as definições padrão, é recomendado usar o Vim como editor de texto.
+Vim é adequado para muitas das necessidades de qualquer utilizador, mas o seu minimalismo dificulta a sua utilização por técnicos e programadores, que precisam de funções mais avançadas, como as presentes no VScode (por extensões).
+NeoVim resolve este problema. É configurado em lua e suporta diversas extensões, escritas em VimScript, lua, e até algumas adaptações do VScode, para além de suportar *multithreating*, para obter maior performance com tarefas intensivas.
+A maior desvantagem do NeoVim é a dificuldade e tempo necessário para o configurar. O utilizador deve instalar um plugin manager e configurar cada extensão de acordo com as suas necessidades. TrudeVim foi criado para remover esta barreira de dificuldade.
+
+#### Funções
+Para além de todas as funções do NeoVim padrão, TrudeVim adiciona:
+- Atalhos personalizados (`jk` para voltar ao modo Normal, etc...)
+- Leader key (espaço)
+- Lazy plugin manager pré-configurado
+- Instalação automática com scripts
+- Autocompletação de código
+- Suporte a *snippets*
+- *Snippets* pré configurados para dezenas de linguagens
+- Folha de atalhos de teclado
+- Suporte a GIT e GitHub
+- Linha de comandos GIT no modo de Comandos. (:git ...)
+- Indicadores Git e GitBlame
+- Dashboard personalizada
+- Suporte a diversos temas e cores
+- Statusline com powerline e integração com outros plugins
+- Explorador de ficheiros
+- Guias de identação
+- Comandos para comentar código automaticamente
+- *Fuzzy Finder* - Pesquisa para ficheiros, grep, menus, etc...
+- Diversas opções pré-definidas
+- Suporte a GUIs como Neovide e GVim
+- JavaScript, Html/CSS, C e lua suportados por padrão, com suporte a dezenas de linguagens com apenas alguns cliques
+- Terminal integrado
+- "Tabs" gráficas para *buffers*
+- Suporte completo a rato / eventos de clique
+- Icones gráficos em menus, ficheiros e pastas
+- Fácilmente extensível com qualquer outro plugin, tanto do Vim, Nvim, como adaptações do VScode
+#### Instalação
+As instruções de instalação estão localizadas no repositório [TrudeVim](https://github.com/TrudeEH/TrudeVim).
 
 ### GitHub / Wiki
+O GitHub foi bastante utilizado durante o desenvolvimento do XPrism, e serve como histórico de versões, página de *downloads* e atualizações. Além disso, a Wiki contém mais informações e instruções para utilizar o XPrism.
 ### XPrism Web
+XPrism Web é o site official do projeto. Serve como hub de informação e está hospedado no seu próprio repositório do GitHub. Todo o código do site está lisenciado debaixo da mesma licensa do projeto original (GPL-3). Também é a página inicial do projeto do Henrique Esteves, que desenvolveu aplicações que podem ser integradas com o XPrism.
 #### Construção do site
 #### Hospedagem / GitHub Pages
 
@@ -221,7 +267,7 @@ Dmenu usa a biblioteca Xlib para se comunicar com o servidor X e a biblioteca Xf
 ##### Master/Stack layout []=
 ##### Floating layout ><>
 ##### Grid layout []=
-##### FullScreen layout [M]
+##### FullScreen layout []
 #### System bar
 ##### Status bar
 ##### System tray
