@@ -220,10 +220,13 @@ As instruções de instalação estão localizadas no repositório [TrudeVim](ht
 
 ### GitHub / Wiki
 O GitHub foi bastante utilizado durante o desenvolvimento do XPrism, e serve como histórico de versões, página de *downloads* e atualizações. Além disso, a Wiki contém mais informações e instruções para utilizar o XPrism.
-### XPrism Web
-XPrism Web é o site official do projeto. Serve como hub de informação e está hospedado no seu próprio repositório do GitHub. Todo o código do site está lisenciado debaixo da mesma licensa do projeto original (GPL-3). Também é a página inicial do projeto do Henrique Esteves, que desenvolveu aplicações que podem ser integradas com o XPrism.
+### [XPrism Web](https://trudeeh.github.io/XPrismWeb/XPrism.html)
+XPrism Web é o site official do projeto. Serve como hub de informação e está hospedado no seu próprio repositório do GitHub. Todo o código do site está licensiado debaixo da mesma licensa do projeto original (GPL-3). Também é a página inicial do projeto do Henrique Esteves, que desenvolveu aplicações que podem ser integradas com o XPrism.
 #### Construção do site
+XPrism Web foi desenvolvido durante várias aulas do curso e de forma autónoma, e foi criado de raiz com HTML, CSS e JavaScript.
+
 #### Hospedagem / GitHub Pages
+O código fonte do site está disponível num [repositório do GitHub](https://github.com/trudeeh/XPrismWeb). (...)
 
 ## Configuração do XPrism
 
