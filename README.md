@@ -75,6 +75,12 @@ Em vez de utilizar janelas flutuantes, XPrism organiza-as automaticamente, o que
     - [Alteração do papel de parede](#alteração-do-papel-de-parede)
     - [Formas de encerrar / voltar ao DM (Display Manager)](#formas-de-encerrar--voltar-ao-dm-display-manager)
   - [Linha do tempo](#linha-do-tempo)
+    - [201X - 2018](#201x---2018)
+    - [2018 - 2019](#2018---2019)
+    - [2019 - 2020](#2019---2020)
+    - [2020 - 2021](#2020---2021)
+    - [2021 - 2022](#2021---2022)
+    - [2022 - 2023](#2022---2023)
   - [Dificuldades encontradas](#dificuldades-encontradas)
   - [Repositórios do projeto](#repositórios-do-projeto)
   - [Conclusão / Futuro do projeto](#conclusão--futuro-do-projeto)
@@ -282,15 +288,50 @@ O código fonte do site está disponível num [repositório do GitHub](https://g
 ### Formas de encerrar / voltar ao DM (Display Manager)
 
 ## Linha do tempo
-- Versões do projeto
-- Inicio (2018) - Atualidade
+Esta secção tem como objetivo mostrar o desenvolvimento de XPrism, desde a ideia inicial, protótipos e versões anteriores.
+
+
+### 201X - 2018
+Tudo começou alguns anos antes de 2018. Eu já tinha ouvido falar de Linux, mas nunca o tinha utilizado. No entanto, devido a problemas com o meu computador com Windows 10, finalmente decidi experimentar. Até 2018, testei dezenas de distribuições Linux, como o Debian, Ubuntu, Arch, e diversas variações, mas nenhuma me agradou completamente. Durante essa busca pelo "sistema perfeito", aprendi bastante sobre Linux e os seus componentes fundamentais, mas não foi até 2018 que realmente começei a fazer algum progresso em direção ao projeto que deu origem ao XPrism.
+
+### 2018 - 2019
+No ínicio de 2018, percebi que nenhuma distribuição Linux poderia chegar ao meu ideal de performance e funcionalidade, e decidi pesquisar mais a fundo sobre cada componente Linux, com a esperança de modificar uma distribuição existente para alcançar os meus objetivos.
+Esse esforço levou-me ao estudo de ambientes gráficos, Xorg e gestores de janelas, bem como os seus diversos componentes. No início, utilizava o XFCE como ambiente gráfico, mas com o tempo, começei a utilizar o terminal para a maioria das minhas tarefas diárias, e o ambiente gráfico servia apenas para o navegador. Utilizar apenas o terminal provou ser mais eficiente do que ambientes gráficos, mas não era possível realizar todas as minhas tarefas apenas com a consola, o que me obrigava a manter um ambiente gráfico disponível a qualquer momento.
+Com o tempo, estudei sobre ambientes de trabalho e gestores de janelas, o que me permitiu escolher os componentes da distribuição Linux que utilizava, e torná-la mais leve e eficiente.
+### 2019 - 2020
+Em 2019 decidi testar o AwesomeWM, um gestor de janelas automático, mais leve e eficiente do que gestores com janelas flutuantes. AwesomeWM é configurado em lua, e pode ser extendido com um conjunto de programas para menus, barra de sistema e tray.
+Essa foi a minha introdução ao mundo de "tiling WMs", que foi a inspiração para o XPrism. Nesse tempo, para além de aprender lua, testei vários gestores de janelas como o QTile, configurado em Python, XMonad, configurado em Haskell e i3, com a sua própria linguagem, entre outros. No entanto, acabava sempre por voltar ao Awesome, que era o mais "completo" de todos os que testei.
+O sistema de base (sem contar com o Xorg e o Kernel), ocupava cerca de 400MB de RAM, num computador com 4GB alocados.
+Por mais que o ambiente já me deixasse satisfeito, eu planeava melhorar a performance, e reduzir o consumo de CPU.
+
+### 2020 - 2021
+A 16 de Agosto de 2020, decidi publicar a [primeira versão de TrudeOS](https://github.com/TrudeEH/AwesomeWM-desktop) (que mais tarde iria dar origem ao XPrism).
+O ambiente já suportava um modo flutuante, automático (master/stack), grid (2+master/stack) e full (tela cheia), mas não suportava transparência, atualizações de repositório, e não possuia uma lockscreen ou terminal padrão. (O XTerm era uma dependência).
+![screenshot1](https://user-images.githubusercontent.com/48379395/91666608-14339280-eaf6-11ea-918e-3f06747516ed.png)
+![screenshot2](https://user-images.githubusercontent.com/48379395/91666609-185fb000-eaf6-11ea-9246-e3de3623ce5b.png)
+![screenshot3](https://user-images.githubusercontent.com/48379395/91666610-18f84680-eaf6-11ea-9ea0-970d910cca2b.png)
+### 2021 - 2022
+2021 foi um ano de testes e modificações. Testei o Slax e desenvolvi deversos módulos, mas não tive sucesso em implementar o AwesomeWM com a distribuição. Após diversos testes, decidi escolher todas. Criar um ambiente que funcionasse em qualquer distribuição Linux. Também criei uma [versão do ambiente baseado no LXQT](https://github.com/TrudeEH/LXQT-desktop), que não foi mantida por muito tempo, pois rapidamente começei a desenvolver a versão 3 do sistema.
+Também realizei diversos [testes com o OpenBox](https://github.com/TrudeEH/Openbox-desktop) e terminei a versão 3 do sistema, que infelizmente foi perdida com o tempo. Finalmente, descobri algo que mudou o projeto completamente: o DWM. O DWM parecia tudo o que procurava: Um gestor de janelas simples, extremamente leve e altamente extensível. Não demorou muito até o tentar utilizar, mas sem sucesso, devido à complexidade do código fonte escrito em C.
+Passei o resto do ano a estudar C, adicionar alguns componentes e desenvolver um instalador universal.
+Finalmente, publiquei duas versões do ambiente: [TruDE-1](https://github.com/TrudeEH/TruDE-old), ainda baseado no AwesomeWM, a 20 de agosto de 2021 e [TruDE-2](https://github.com/TrudeEH/TruDE-old2), a 30 de novembro do mesmo ano.
+
+### 2022 - 2023
+Este ano, após meses de estudo e desenvolvimento, apresento XPrism, contruído com base no DWM e com o mínimo de dependências possíveis. Adicionei diversas opções de estilo, transparência e outros efeitos visuais, bem como um código fonte mais limpo e bem estruturado. A nível de performance, o que começou por ocupar 400MB de RAM no sistema, agora ocupa >1MB (sem contar com o Xorg e Kernel) e não tem praticamente nenhum impacto no processador. (O sistema apresenta 0% - 0.1%, pois não consegue aproximar o número real).
+Após isto, desenvolvi um editor de texto/código baseado no NVIM para acompanhar os atalhos padrão do XPrism, configurado em lua.
+No entanto, este não será o fim desta jornada. Com a mudança do Xorg para a Wayland, o potêncial para um sistema ainda mais leve e eficiente aumenta, e com isso o desenvolvimento de uma nova versão do XPrism, que possivelmente começará com o lançamento da primeira versão estável do Wayland.
 
 ## Dificuldades encontradas
+Apareceram diversas dificuldades ao longo do projeto, como por exemplo:
+- Falta de orientação: Não foi fácil aprender conceitos muito específicos sobre Xorg e DWM, e não existe um guia para criar um ambiente de trabalho. O projeto só foi possível devido a muita tentativa e erro, pesquisas que levaram a becos sem saída e horas gastas a ler documentação e fazer perguntas em fórums.
+- Conhecimentos em C: O curso profissional não aborda conceitos mais avançados de C como structs, pointers e como o compilador funciona, e não aprendemos lógica avançada. Todo o conhecimento que tenho em C foi adquirido durante o desenvolvimento do XPrism.
+- Base extensa: O DWM, ST e SLstatus, por mais que simples em funcionalidade, são compostos por milhares de linhas de código em C, sem qualquer tipo de documentação, exceto comentários no código, o que dificultou muito a compreensão e extensão dos projetos.
+- Algo novo: Até recentemente, não existia nenhuma "competição" ao XPrism (que eu conheça). Já existiam gestores de janelas automáticos, mas nenhum ambiente completo estava disponível, e, por isso, foi necessário pensar em situações, problemas e soluções completamente novas, sem documentação sobre o assunto. A comunidade Linux foi fundamental para resolver alguns erros e garantir a segurança do código, mas raramente estava disponível.
 
 ## Repositórios do projeto
 - [XPrism GitHub](https://github.com/TrudeEH/XPrism)
 - [TrudeVim](https://github.com/TrudeEH/TrudeVim)
-- [XPrism Website](https://trudeeh.github.io/XPrism-Website)
+- [XPrism Website](https://trudeeh.github.io/XPrismWeb/XPrism.html)
 
 ## Conclusão / Futuro do projeto
 - Maior conhecimento de low level e C
