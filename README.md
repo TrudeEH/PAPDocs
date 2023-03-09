@@ -264,12 +264,16 @@ Foi escolhida a linguagem de programação C por vários motivos: C é uma das l
 A maior desvantagem de escrever código em C é as preocupações de segurança. Um simples erro em gestão de memória pode introduzir uma vulnerabilidade que comprometa o ambiente, ou até a máquina como um todo. Esta preocupação é ainda mais grave em servidores, que são alvos de ataques contantemente. XPrism minimizou estas preocupações de diversas formas: O código base, escrito pela equipa Suckless, é open-source e está disponível há vários anos. Todo o tempo que foi utilizado e testado eliminou a maioria, senão todos os bugs possíveis. As adições do XPrism representam cerca de 2k-3k linhas de código, que também estão disponíveis publicamente. Devido à sua natureza open-source, erros podem ser reportados e corrigidos em minutos, antes de um atacante ter tempo de utilizar essa vulnerabilidade. No entanto, nenhum software é perfeito, e estes riscos aplicam-se a qualquer ambiente Linux. Devido à simplicidade do código do XPrism (~5k linhas em componentes críticos), é mais fácil detetar um erro do que em software mais complexo, o que elimina a maioria das preocupações com segurança.
 
 ## Produtividade
+Um dos objetivos fundamentais de XPrism é contribuír para aumentar a produtividade de técnicos de informática e programadores. Para atingir esse objetivo, a maioria dos atalhos de teclado padrão baseiam-se no Vim e são projetados para evitar conflitos com editores CLI e multiplexadores de terminal.
 
 ### Vim
+É recomendado consultar a secção [TrudeVim](#trudevim) para obter mais informações sobre o que é e como funciona o Vim.
 
 ### Atalhos de teclado
-- Padrão compatível com Vim
-- Podem ser alterados
+XPrism usa apenas o teclado para navegação, redimensionar janelas, executar comandos, etc. É possível utilizar o cursor para alterar entre tabs, mover janelas e executar comandos específicos dentro de menus. No entanto, o cursor serve apenas como apoio, ao contrário da maioria dos ambientes modernos.
+Muitas tarefas são automatizadas ou muito otimizadas para o teclado, o que torna o ambiente mais produtivo, comparado com a maioria dos ambientes gráficos. A desvantagem passa pela necessidade de memorizar os atalhos. A curva de aprendizagem é particularmente acentuada no caso do XPrism, mas após algum tempo de treino, um utilizador rápidamente se torna mais produtivo do que era antes, em ambientes como o GNOME ou KDE. Para ajudar nessa fase, existe um script no menu principal que lê a configuração do XPrism e procura atalhos de teclado, e mostra-os numa lista. Esta opção é acessível pela combinação: `MOD+A - "Keyboard Shortcuts"`. Utilizadores do Vim não terão dificuldades em aprender os atalhos, pois são bastante similares aos do editor e intuitivos.
+
+__NOTA:__ O XPrism respeita as teclas de atalho padrão do Vim, mas esse comportamento pode ser alterado pelo utilizador através dos ficheiros de configuração do sistema.
 
 ## Aplicações possíveis
 
