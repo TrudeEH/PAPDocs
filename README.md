@@ -62,6 +62,12 @@ Em vez de utilizar janelas flutuantes, XPrism organiza-as automaticamente, o que
   - [Guia de utilização](#guia-de-utilização)
     - [Instalação](#instalação-1)
     - [Workflow](#workflow)
+      - [Menu principal](#menu-principal)
+        - [Atualização](#atualização)
+        - [Atalhos de teclado](#atalhos-de-teclado-1)
+        - [Papel de parede](#papel-de-parede)
+        - [Encerrar a máquina](#encerrar-a-máquina)
+      - [Lançador de programas](#lançador-de-programas)
       - [Tags](#tags)
       - [Layout](#layout)
         - [Master/Stack layout \[\]=](#masterstack-layout-)
@@ -71,9 +77,6 @@ Em vez de utilizar janelas flutuantes, XPrism organiza-as automaticamente, o que
       - [System bar](#system-bar)
         - [Status bar](#status-bar)
         - [System tray](#system-tray)
-    - [Atualização](#atualização)
-    - [Alteração do papel de parede](#alteração-do-papel-de-parede)
-    - [Formas de encerrar / voltar ao DM (Display Manager)](#formas-de-encerrar--voltar-ao-dm-display-manager)
   - [Linha do tempo](#linha-do-tempo)
     - [201X - 2018](#201x---2018)
     - [2018 - 2019](#2018---2019)
@@ -232,24 +235,33 @@ XPrism Web é o site official do projeto. Serve como hub de informação e está
 XPrism Web foi desenvolvido durante várias aulas do curso e de forma autónoma, e foi criado de raiz com HTML, CSS e JavaScript.
 
 #### Hospedagem / GitHub Pages
-O código fonte do site está disponível num [repositório do GitHub](https://github.com/trudeeh/XPrismWeb). (...)
+O código fonte do site está disponível num [repositório do GitHub](https://github.com/trudeeh/XPrismWeb). Para hospedar o site, foi utilizada uma automação do GitHub pages, que automaticamente atualiza o site online quando o código fonte é alterado. Também existem diversas automações para garantir que não são partilhadas informações confidenciais quando o código é publicado, e que não existem erros de segurança com os scripts em JavaScript.
 
 ## Configuração do XPrism
-
-- foco em portabilidade, etc...
+Existem 3 ficheiros de configuração do XPrism para cada componente: config.h, componente/config.h e fonte. Estes fichiros estão divididos para facilitar a partilha de configurações e aumentar a modularidade, e devem ser editados de acordo com o tipo de modificação que o utilizador deseja efetuar, dependendo do nível de complexidade.
 
 ### config.h (global)
+config.h representa o nível mais simples em complexidade, e é altamente modular. Utiliza instruções `#define` para o pré-processador de C substituir dados das configurações no componente/config.h.
+É utilizado para definir opções de aparência, estilos, tamanho de componentes e algumas opções da barra do sistema.
+Esta configuração deve ser usada apenas para alterar estilos e não para atalhos de teclado e definições pessoais. Isto permite que qualquer pessoa possa partilhar a sua config.h ou implementar estilos criados por outro utilizador.
 
 ### componente/config.h (específico)
+componente/config.h são configurações para *cada componente*, que contêm estilos muito específicos, atalhos de teclados, tags e outras configurações pessoais do sistema. Por exemplo, as configurações do DWM estão em dwm/config.h.
+Estas configurações não devem ser aplicadas no código global, pois cada componente tem estruturas de dados diferentes, e/ou é configurado com parâmetros unicos.
+Estas configurações são mais avançadas, e, por isso, é recomendado proceder com atenção para evitar erros que danifiquem o ambiente.
 
 ### Código-Fonte (mais específico)
+No caso de não existir uma configuração muito específica, função ou integração com uma aplicação, é recomendado editar o código fonte de cada componente. Esta opção é a mais complexa, sendo necessário algum conhecimento sobre programação em C.
+Para facilitar estas operações, pode ser utilizado o comando `patch -p1 < patch.diff`, sendo que patch.diff é um patch ao código a ser aplicado. Estes patches podem ser criados pela comunidade e ser aplicados diretamente ao código fonte, de forma automática. No caso de não existir um patch para uma determinada alteração, é recomendado criar um patch de raiz, ou criar um fork ao código no GitHub para efetuar essas alterações. Se o utilizador desejar contribuír para o código do projeto, poderá efetuar um pull request após terminar as suas alterações.
 
 ## Recursos do sistema / Performance
+Esta secção cobre preocupações de segurança e performance do ambiente, e as soluções a essas dificuldades, e o mitovo de C ser escolhido como linguagem de programação.
 
 ### Porquê C?
+Foi escolhida a linguagem de programação C por vários motivos: C é uma das linguagens mais rápidas disponíveis, e é a linguagem mais utilizada no Kernel Linux (Alguns headers já são incluídos no sistema, o que reduz o tamanho final do executavél). Além disso, é bastante flexivel e conhecida, o que ajuda na adoção e facilidade de modificação do XPrism. C também permite gerir memória de forma bastante eficiente, e executar outras operações de "baixo nível", ou seja, mais "próximo" ao hardware.
 
 ### Segurança
-- Base estável suckless, etc...
+A maior desvantagem de escrever código em C é as preocupações de segurança. Um simples erro em gestão de memória pode introduzir uma vulnerabilidade que comprometa o ambiente, ou até a máquina como um todo. Esta preocupação é ainda mais grave em servidores, que são alvos de ataques contantemente. XPrism minimizou estas preocupações de diversas formas: O código base, escrito pela equipa Suckless, é open-source e está disponível há vários anos. Todo o tempo que foi utilizado e testado eliminou a maioria, senão todos os bugs possíveis. As adições do XPrism representam cerca de 2k-3k linhas de código, que também estão disponíveis publicamente. Devido à sua natureza open-source, erros podem ser reportados e corrigidos em minutos, antes de um atacante ter tempo de utilizar essa vulnerabilidade. No entanto, nenhum software é perfeito, e estes riscos aplicam-se a qualquer ambiente Linux. Devido à simplicidade do código do XPrism (~5k linhas em componentes críticos), é mais fácil detetar um erro do que em software mais complexo, o que elimina a maioria das preocupações com segurança.
 
 ## Produtividade
 
@@ -269,8 +281,15 @@ O código fonte do site está disponível num [repositório do GitHub](https://g
 - Respode a perguntas: Como fazer x?
 
 ### Instalação
+As intruções de instalação do XPrism estão disponíveis no [repositório oficial no GitHub](https://github.com/TrudeEH/XPrism/wiki).
 
 ### Workflow
+#### Menu principal
+##### Atualização
+##### Atalhos de teclado
+##### Papel de parede
+##### Encerrar a máquina
+#### Lançador de programas
 #### Tags
 #### Layout
 ##### Master/Stack layout []=
@@ -280,12 +299,6 @@ O código fonte do site está disponível num [repositório do GitHub](https://g
 #### System bar
 ##### Status bar
 ##### System tray
-
-### Atualização
-
-### Alteração do papel de parede
-
-### Formas de encerrar / voltar ao DM (Display Manager)
 
 ## Linha do tempo
 Esta secção tem como objetivo mostrar o desenvolvimento de XPrism, desde a ideia inicial, protótipos e versões anteriores.
@@ -334,11 +347,10 @@ Apareceram diversas dificuldades ao longo do projeto, como por exemplo:
 - [XPrism Website](https://trudeeh.github.io/XPrismWeb/XPrism.html)
 
 ## Conclusão / Futuro do projeto
+XPrism \<INC\>
+
 - Maior conhecimento de low level e C
 - Transição para Wayland
 
 ## Agradecimentos finais
-- Equipa Suckless
-- Professores
-- etc...
-- Comunidade open-source
+Este projeto não seria possível sem o código base fornecido pela equipa Suckless e outros projetos da comunidade open-source. Além disso, o tempo de aulas do curso permitiram testar e corrigir erros que, de outra forma poderiam passar despercebidos. E, por fim, familiares e amigos forneceram o apoio necessário para o projeto ser desenvolvido.
