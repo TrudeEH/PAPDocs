@@ -73,7 +73,8 @@ Em vez de utilizar janelas flutuantes, XPrism organiza-as automaticamente, o que
         - [Master/Stack layout \[\]=](#masterstack-layout-)
         - [Floating layout \>\<\>](#floating-layout-)
         - [Grid layout \[\]=](#grid-layout-)
-        - [FullScreen layout \[\]](#fullscreen-layout-)
+        - [Horizontal layout \[\]=](#horizontal-layout-)
+        - [Monocle layout \[\]](#monocle-layout-)
       - [System bar](#system-bar)
         - [Status bar](#status-bar)
         - [System tray](#system-tray)
@@ -276,33 +277,68 @@ Muitas tarefas são automatizadas ou muito otimizadas para o teclado, o que torn
 __NOTA:__ O XPrism respeita as teclas de atalho padrão do Vim, mas esse comportamento pode ser alterado pelo utilizador através dos ficheiros de configuração do sistema.
 
 ## Aplicações possíveis
-
+XPrism pode ser instalado tanto em computadores pessoais como em servidores.
 ### No servidor
+XPrism apresenta diversas vantagens para servidores. Em primeiro lugar, o ambiente é muito leve, e é ideal para servidores com capacidades limitadas. Além disso, ele apresenta poucos bugs, pois o código é pequeno e simples (comparado com o GNOME e KDE, por exemplo), o que também facilita a manutenção e atualização do sistema. Isso é particularmente importante em ambientes de servidor, onde a estabilidade e a confiabilidade são fundamentais.
+
+Outra vantagem do XPrism é que ele permite que o utilizador trabalhe de forma mais produtiva por utilizar apenas o teclado. Isso é especialmente útil para administradores de sistema que precisam realizar diversas tarefas repetitivas de forma rápida e eficiente. Além disso, o XPrism funciona mesmo que o servidor não possua um rato, o que é comum em servidores remotos.
 
 ### No computador pessoal
+O XPrism também é excelente para computadores pessoais. Uma das suas principais vantagens é ser extremamente leve. Isso é ótimo para computadores mais antigos ou com capacidades limitadas, que podem ser utilizados por mais tempo, sem a necessidade de substituição.
+
+Esse facto também é importante do ponto de vista ambiental, pois o descarte prematuro de equipamentos eletrónicos pode gerar impactos negativos no meio ambiente. Com o XPrism, é possível prolongar a vida útil de computadores antigos, contribuindo para a redução da produção de resíduos eletrónicos e diminuição das emissões de carbono.
+
+Além disso, o XPrism tem uma interface minimalista que permite ao utilizador concentrar-se nas tarefas em vez de se distrair com elementos desnecessários. Isso torna o XPrism uma excelente opção para utilizadores que buscam uma experiência de uso mais fluida e eficiente.
 
 ## Guia de utilização
-- Respode a perguntas: Como fazer x?
 
 ### Instalação
 As intruções de instalação do XPrism estão disponíveis no [repositório oficial no GitHub](https://github.com/TrudeEH/XPrism/wiki).
 
 ### Workflow
 #### Menu principal
+O menu principal de XPrism é chamado por MOD+A, por padrão, e contém diversas funções úteis e atalhos. Este menu é altamente personalizável, e permite ao utilizador adicionar novas opções e remover opções existentes, simplesmente por editar um ficheiro em bash.
 ##### Atualização
+A primeira opção do menu é um atualizador. Após selecionar a opção, um novo terminal será aberto, que verifica se existem atualizações ao repositório no GitHub, e, se sim, atualiza o sistema. No caso de o utilizador já ter aplicado configurações personalizadas, o script pergunta se estas deve ser substituídas, ou se devem ser incrementadas à atualização.
 ##### Atalhos de teclado
+A segunda opção: "Keyboard Shortcuts", abre uma secção com todos os atalhos de XPrism. Estes atalhos são dinânicos, e atualizam de acordo com os ficheiros de configuração. Este comportamento é possível por utilizar comandos padrão em distribuições Linux para filtrar, procurar e formatar texto.
 ##### Papel de parede
+A opção seguinte, "Change Wallpaper", abre uma nova janela do `nitrogen` que permite ao utilizador alterar o papel de parede do ambiente.
+
 ##### Encerrar a máquina
+Por fim, "Shutdown System" desliga a máquina.
+__Nota:__ Para encerrar sessão em vez de desligar, é necessário fechar todos os programas em execução e usar o atalho: MOD+SHIFT+q.
 #### Lançador de programas
+O lançador de programas (dmenu), suporta execução de comandos, scripts personalizavéis e pode ser chamado por outros programas para criar menus gráficos. Por padrão, pode ser chamado por: MOD+p
 #### Tags
+As tags comportam-se de forma semelhante a ambientes de trabalho virtuais. O utilizador pode alternar entre tags com o atalho: MOD+?? (?? - número da tag). Cada tag pode conter programas, layouts e estilos diferentes (por exemplo: largura da borda das janelas).
+Como exemplo, a tag 1 poderia conter um navegador em tela cheia, e a tag 2 poderia conter dois terminais em modo flutuante, etc. O objetivo das tags é ajudar o utilizador a organizar-se de forma mais eficiente e abrir programas que não devem ocupar espaço no ecrã. (Não existe forma de minimizar janelas por padrão, as tags substituem essa funcionalidade.) É possível definir tags padrão para certas aplicações, alterar a aparência das tags, mudar atalhos em cada tag e até alterar o comportamento padrão com vários monitores.
 #### Layout
+XPrism suporta diversos layouts (disposições) automáticos para janelas. Existem 4 layouts: Master/Stack, Floating, Grid e Monocle. Para alterar entre layouts, pode ser usado o atalho MOD+SPACE, ou MOD+M para monocle, MOD+T para tiling (Master/Stack), etc...
+
 ##### Master/Stack layout []=
+Master/Stack define uma janela como o Master (a mais recente por padrão) e todas as restantes como o Stack. As janelas em stack dividem-se entre si para ocupar o restante do ecrã.
+
 ##### Floating layout ><>
+O layout flutuante é o mais comum em ambientes gráficos. As janelas flutuam livremente e podem ser redimensionadas com MOD+RClick e movidas com MOD+LClick. Este layout foi projetado para ser utilizado com o rato, e é útil no príodo de transição para o XPrism, já que o utilizador provavelmente estará habituado a esse layout, e também com certas aplicações que não devem ser redimensionadas de forma automática, por exemplo, alguns jogos.
+
 ##### Grid layout []=
-##### FullScreen layout []
+O grid layout é uma variante do Master/Stack, e é ativado quando o utilizador adiciona uma nova janela ao Master. Por exemplo, se o utilizador abrir uma janela no Master e três no stack, pode mover uma das janelas no stack para o Master. Dessa forma, o layout transforma-se numa grelha, em que 2 janelas ocupam o Master stack ao mesmo tempo. O resultado final é cada janela ocupar 1/4 do espaço disponível.
+
+##### Horizontal layout []=
+O layout horizontal também é criado a partir do Master/Stack, e é ativado quando o utilizador move todas as janelas para o Master. Dessa forma, uma única coluna contém todas as janelas.
+
+##### Monocle layout []
+Monocle é o equivalente a tela cheia no XPrism. Quando ativo, as janelas sobrepõem-se, e as teclas de navegação trocam a janela em foque. Este layout comporta-se como um navegador em tela cheia, que usa tabs para alternar entre janelas. Neste caso, o processo é controlado pelo teclado.
+
 #### System bar
+A barra de sistema mostra informação relevante como as tags, título da janela em foque, status bar e system tray. Esta barra pode ser escondida com MOD+b.
+
 ##### Status bar
+A status bar mostra informações sobre o sistema, como a taxa de utilização do CPU, RAM, bateria (em portáteis), data e hora. Esta secção é muito personalizavél e módulos podem ser adicionados, removidos, e é possível alterar o estilo.
+
 ##### System tray
+O system tray é uma área à direita da status bar onde aplicações podem adicionar icones. Por padrão, o controle de volume e internet estão localizados no system tray.
 
 ## Linha do tempo
 Esta secção tem como objetivo mostrar o desenvolvimento de XPrism, desde a ideia inicial, protótipos e versões anteriores.
@@ -351,7 +387,10 @@ Apareceram diversas dificuldades ao longo do projeto, como por exemplo:
 - [XPrism Website](https://trudeeh.github.io/XPrismWeb/XPrism.html)
 
 ## Conclusão / Futuro do projeto
-XPrism \<INC\>
+A nível pessoal, este projeto foi muito útil, não só devido às novas aprendizagens adquiridas sobre C e computação em geral, mas também a nível de organização de projeto, boas práticas com sistemas de controle de versão e desenvolvimento web.
+O resultado final também atingiu as espectativas: Um ambiente extremamente leve, disponivel para qualquer pessoa.
+No futuro, XPrism continuará a ser mantido e atualizado.
+Quando o Wayland atingir a maturidade, XPrism será reconstruído para funcionar com a nova tecnologia, com o objetivo de continuar a melhorar efeitos gráficos e suporte a novos equipamentos.
 
 - Maior conhecimento de low level e C
 - Transição para Wayland
