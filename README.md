@@ -298,15 +298,19 @@ As intruções de instalação do XPrism estão disponíveis no [repositório of
 ### Workflow
 #### Menu principal
 O menu principal de XPrism é chamado por MOD+A, por padrão, e contém diversas funções úteis e atalhos. Este menu é altamente personalizável, e permite ao utilizador adicionar novas opções e remover opções existentes, simplesmente por editar um ficheiro em bash.
+
 ![menu](./images/guide/main_menu.png)
 ##### Atualização
 A primeira opção do menu é um atualizador. Após selecionar a opção, um novo terminal será aberto, que verifica se existem atualizações ao repositório no GitHub, e, se sim, atualiza o sistema. No caso de o utilizador já ter aplicado configurações personalizadas, o script pergunta se estas deve ser substituídas, ou se devem ser incrementadas à atualização.
+
 ![update](images/guide/update.png)
 ##### Atalhos de teclado
 A segunda opção: "Keyboard Shortcuts", abre uma secção com todos os atalhos de XPrism. Estes atalhos são dinânicos, e atualizam de acordo com os ficheiros de configuração. Este comportamento é possível por utilizar comandos padrão em distribuições Linux para filtrar, procurar e formatar texto.
+
 ![keybinds](images/guide/keybind.png)
 ##### Papel de parede
 A opção seguinte, "Change Wallpaper", abre uma nova janela do `nitrogen` que permite ao utilizador alterar o papel de parede do ambiente.
+
 ![nitrogen](images/guide/nitrogen.png)
 
 ##### Encerrar a máquina
@@ -314,44 +318,54 @@ Por fim, "Shutdown System" desliga a máquina.
 __Nota:__ Para encerrar sessão em vez de desligar, é necessário fechar todos os programas em execução e usar o atalho: MOD+SHIFT+q.
 #### Lançador de programas
 O lançador de programas (dmenu), suporta execução de comandos, scripts personalizavéis e pode ser chamado por outros programas para criar menus gráficos. Por padrão, pode ser chamado por: MOD+p
+
 ![dmenu](images/dmenu.png)
 #### Tags
 As tags comportam-se de forma semelhante a ambientes de trabalho virtuais. O utilizador pode alternar entre tags com o atalho: MOD+?? (?? - número da tag). Cada tag pode conter programas, layouts e estilos diferentes (por exemplo: largura da borda das janelas).
 Como exemplo, a tag 1 poderia conter um navegador em tela cheia, e a tag 2 poderia conter dois terminais em modo flutuante, etc. O objetivo das tags é ajudar o utilizador a organizar-se de forma mais eficiente e abrir programas que não devem ocupar espaço no ecrã. (Não existe forma de minimizar janelas por padrão, as tags substituem essa funcionalidade.) É possível definir tags padrão para certas aplicações, alterar a aparência das tags, mudar atalhos em cada tag e até alterar o comportamento padrão com vários monitores.
+
 ![tags](images/tags.png)
 #### Layout
 XPrism suporta diversos layouts (disposições) automáticos para janelas. Existem 4 layouts: Master/Stack, Floating, Grid e Monocle. Para alterar entre layouts, pode ser usado o atalho MOD+SPACE, ou MOD+M para monocle, MOD+T para tiling (Master/Stack), etc...
 
 ##### Master/Stack layout []=
 Master/Stack define uma janela como o Master (a mais recente por padrão) e todas as restantes como o Stack. As janelas em stack dividem-se entre si para ocupar o restante do ecrã.
+
 ![master](images/layouts/stack.png)
 
 ##### Floating layout ><>
 O layout flutuante é o mais comum em ambientes gráficos. As janelas flutuam livremente e podem ser redimensionadas com MOD+RClick e movidas com MOD+LClick. Este layout foi projetado para ser utilizado com o rato, e é útil no príodo de transição para o XPrism, já que o utilizador provavelmente estará habituado a esse layout, e também com certas aplicações que não devem ser redimensionadas de forma automática, por exemplo, alguns jogos.
+
 ![float](images/layouts/float.png)
 
 ##### Grid layout []=
 O grid layout é uma variante do Master/Stack, e é ativado quando o utilizador adiciona uma nova janela ao Master. Por exemplo, se o utilizador abrir uma janela no Master e três no stack, pode mover uma das janelas no stack para o Master. Dessa forma, o layout transforma-se numa grelha, em que 2 janelas ocupam o Master stack ao mesmo tempo. O resultado final é cada janela ocupar 1/4 do espaço disponível.
+
 ![grid](images/layouts/grid.png)
 
 ##### Horizontal layout []=
 O layout horizontal também é criado a partir do Master/Stack, e é ativado quando o utilizador move todas as janelas para o Master. Dessa forma, uma única coluna contém todas as janelas.
+
 ![horizontal](images/layouts/horizontal.png)
 
 ##### Monocle layout []
 Monocle é o equivalente a tela cheia no XPrism. Quando ativo, as janelas sobrepõem-se, e as teclas de navegação trocam a janela em foque. Este layout comporta-se como um navegador em tela cheia, que usa tabs para alternar entre janelas. Neste caso, o processo é controlado pelo teclado.
+
 ![monocle](images/layouts/monocle.png)
 
 #### System bar
 A barra de sistema mostra informação relevante como as tags, título da janela em foque, status bar e system tray. Esta barra pode ser escondida com MOD+b.
+
 ![bar](images/guide/bar.png)
 
 ##### Status bar
 A status bar mostra informações sobre o sistema, como a taxa de utilização do CPU, RAM, bateria (em portáteis), data e hora. Esta secção é muito personalizavél e módulos podem ser adicionados, removidos, e é possível alterar o estilo.
+
 ![sysbar](images/guide/sysbar.png)
 
 ##### System tray
 O system tray é uma área à direita da status bar onde aplicações podem adicionar icones. Por padrão, o controle de volume e internet estão localizados no system tray.
+
 ![tray](images/guide/tray.png)
 
 ## Linha do tempo
