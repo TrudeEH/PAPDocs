@@ -88,6 +88,7 @@ Em vez de utilizar janelas flutuantes, XPrism organiza-as automaticamente, o que
   - [Dificuldades encontradas](#dificuldades-encontradas)
   - [Repositórios do projeto](#repositórios-do-projeto)
   - [Conclusão / Futuro do projeto](#conclusão--futuro-do-projeto)
+  - [Contribuidores](#contribuidores)
   - [Agradecimentos finais](#agradecimentos-finais)
 
 ## Filosofia
@@ -160,7 +161,9 @@ O DWM usa uma estrutura de dados chamada Client para armazenar as informações 
 
 O DWM usa uma abordagem minimalista e modular. Ele define apenas algumas funções básicas e valores que podem ser combinadas ou modificadas pelo utilizador através do arquivo config.def.h. Por exemplo, a função focus() muda o foco da janela atual para a próxima ou anterior na lista ligada de Clients; a função tile() organiza as janelas no layout de master/stack; a função monocle() organiza as janelas em layout *fullscreen*; etc.
 
-O código-fonte do DWM é organizado no ficheiro dwm.c. Ele contém a maioria das definições das estruturas de dados, variáveis globais, funções e atalhos usados pelo programa. Ele também inclui alguns arquivos header como config.h (que é gerado a partir do config.def.h), util.h (que contém algumas funções auxiliares) e drw.h (que contém algumas funções relacionadas ao desenho das janelas). Também importa várias funções da pasta plugins, que contém funções "extras", como transparễncia, personalização de cores avançada, etc.
+O código-fonte do DWM é organizado no ficheiro dwm.c. Ele contém a maioria das definições das estruturas de dados, variáveis globais, funções e atalhos usados pelo programa. Ele também inclui alguns arquivos header como config.h (que é gerado a partir do config.def.h), util.h (que contém algumas funções auxiliares) e drw.h (que contém algumas funções relacionadas ao desenho das janelas). Também importa várias funções da pasta plugins, que contém funções "extras", como transparência, personalização de cores avançada, etc.
+
+![dwm](images/dwm.png)
 
 ### ST (Simple Terminal)
 O ST é um terminal simples que funciona no Xorg. Ele comunica-se com o servidor X através da biblioteca Xlib e usa a biblioteca de fontes Xft para desenhar os caracteres no ecrã. Ele também usa a biblioteca util-linux para manipular os *pseudoterminais* (pty) que permitem executar programas num ambiente CLI.
@@ -169,6 +172,8 @@ O ST implementa a maior parte das sequências de escape VT10X, que são códigos
 
 A plugins age de forma similar ao DWM, contém funções opcionais que também podem ser configuradas no ficheiro config.def.h.
 
+![st](images/stLol.png)
+
 ### Dmenu
 Dmenu é um menu dinâmico e leve para X. Ele tem como objetivo facilitar a pesquisa no sistema, lançar aplicações, executar comandos e *scripts* personalizados. O Dmenu substitui um menu tradicional no XPrism.
 
@@ -176,9 +181,14 @@ Dmenu lê texto da entrada padrão (`stdin`) e cria um menu com um item por cada
 
 Dmenu usa a biblioteca Xlib para se comunicar com o servidor X e a biblioteca Xft para desenhar as fontes na tela. Ele também usa a função `popen` da biblioteca padrão C para executar os comandos selecionados pelo utilizador.
 
+![dmenu](images/dmenu.png)
+
 ### Slstatus
 Slstatus é um monitor de status do sistema para gestores de janelas que usam `WM_NAME` ou `stdin` para preencher a barra de status.
 Slstatus lê os dados de diferentes fontes, como arquivos no sistema, comandos ou bibliotecas, e formata-os de acordo com as funções e argumentos definidos no arquivo config.def.h. Em seguida, ele atualiza o `WM_NAME` da janela raiz do X11 ou escreve na saída padrão a cada intervalo especificado na configuração.
+
+![slstatus](images/guide/sysbar.png)
+
 ### Slock
 Slock é um bloqueador de ecrã simples para o X11 que segue a filosofia suckless. Ele bloqueia o ecrã e pede a senha do utilizador atual para desbloquear.
 Slock utiliza a biblioteca *Xlib* para criar uma janela que cobre o ecrã inteiro e captura todos os eventos do teclado e do rato. Ele usa a função `crypt(3)` para verificar se a senha introduzida pelo utilizador corresponde à senha guardada no sistema. Ele também usa o *Xrandr* para suportar vários monitores e o *DPMS* para desligar o monitor após um tempo de inatividade.
@@ -186,10 +196,15 @@ Slock utiliza a biblioteca *Xlib* para criar uma janela que cobre o ecrã inteir
 
 ### Nitrogen (Wallpaper Setter)
 Nitrogen é um programa que permite mudar o papel de parede do ambiente de trabalho. Ele é rápido e leve, e usa a biblioteca GTK2 para a interface gráfica. Ele suporta *Multihead* e *Xinerama*, que são recursos para lidar com múltiplos monitores. Ele também tem um modo de memória que guarda o último papel de parede usado e um modo de linha de comando.
+
+![wall](images/guide/nitrogen.png)
+
 ### TrudeVim
 TrudeVim é um editor de texto altamente extensível para Linux, configurado a partir do NeoVim. Suporta *linting*, servidores de linguagens de programação, autocompletação de código, *snippets* personalizados, entre outras funções. Por padrão trás o servidor `tsserver` e *snippets* para TypeScript e JavaScript, e `lua_ls` para lua.
 Este projeto não faz parte do repositório XPrism por ser considerado um componente adicional.
 TrudeVim também está disponível para MacOS, Windows e qualquer distribuição Linux.
+
+![vim](images/TrudeVim.png)
 
 #### Introdução
 Por padrão, XPrism usa as teclas de atalho do Vim para facilitar a navegação e manipulação de janelas. Por exemplo: `h`, `j`, `k` e `l` substituem as setas no teclado. Estes e outros atalhos não só permitem navegar mais rápido, executar mais funções com o teclado (todas as teclas podem ser usadas como atalho), mas também são mais ergonômicos para utilizadores que praticam *touch typing* (escrever no teclado com as duas mãos, apenas com recurso à memória muscular.) Estes atalhos podem ser alterados, no entanto, para acompanhar as definições padrão, é recomendado usar o Vim como editor de texto.
@@ -230,13 +245,25 @@ As instruções de instalação estão localizadas no repositório [TrudeVim](ht
 
 ### GitHub / Wiki
 O GitHub foi bastante utilizado durante o desenvolvimento do XPrism, e serve como histórico de versões, página de *downloads* e atualizações. Além disso, a Wiki contém mais informações e instruções para utilizar o XPrism.
+
+![100](images/github100.png)
+
 ### [XPrism Web](https://trudeeh.github.io/XPrismWeb/XPrism.html)
 XPrism Web é o site official do projeto. Serve como hub de informação e está hospedado no seu próprio repositório do GitHub. Todo o código do site está licensiado debaixo da mesma licensa do projeto original (GPL-3). Também é a página inicial do projeto do Henrique Esteves, que desenvolveu aplicações que podem ser integradas com o XPrism.
+
+**Computadores / Televisões:**
+![web](images/webStart.png)
+
+**Telemovéis / *Tablets***
+![phone](images/webPhone.png)
+
 #### Construção do site
 XPrism Web foi desenvolvido durante várias aulas do curso e de forma autónoma, e foi criado de raiz com HTML, CSS e JavaScript.
 
 #### Hospedagem / GitHub Pages
 O código fonte do site está disponível num [repositório do GitHub](https://github.com/trudeeh/XPrismWeb). Para hospedar o site, foi utilizada uma automação do GitHub pages, que automaticamente atualiza o site online quando o código fonte é alterado. Também existem diversas automações para garantir que não são partilhadas informações confidenciais quando o código é publicado, e que não existem erros de segurança com os scripts em JavaScript.
+
+![webGit](images/webGit.png)
 
 ## Configuração do XPrism
 Existem 3 ficheiros de configuração do XPrism para cada componente: config.h, componente/config.h e fonte. Estes fichiros estão divididos para facilitar a partilha de configurações e aumentar a modularidade, e devem ser editados de acordo com o tipo de modificação que o utilizador deseja efetuar, dependendo do nível de complexidade.
@@ -392,7 +419,7 @@ O ambiente já suportava um modo flutuante, automático (master/stack), grid (2+
 ![screenshot2](https://user-images.githubusercontent.com/48379395/91666609-185fb000-eaf6-11ea-9246-e3de3623ce5b.png)
 ![screenshot3](https://user-images.githubusercontent.com/48379395/91666610-18f84680-eaf6-11ea-9ea0-970d910cca2b.png)
 ### 2021 - 2022
-2021 foi um ano de testes e modificações. Testei o Slax e desenvolvi deversos módulos, mas não tive sucesso em implementar o AwesomeWM com a distribuição. Após diversos testes, decidi escolher todas. Criar um ambiente que funcionasse em qualquer distribuição Linux. Também criei uma [versão do ambiente baseado no LXQT](https://github.com/TrudeEH/LXQT-desktop), que não foi mantida por muito tempo, pois rapidamente começei a desenvolver a versão 3 do sistema.
+2021 foi um ano de testes e modificações. Testei o Slax e desenvolvi deversos módulos, mas não tive sucesso em implementar o AwesomeWM com a distribuição. Eu não sabia que distribuição deveria escolher para o projeto, mas após diversos testes, decidi escolher todas. Criar um ambiente que funcionasse em qualquer distribuição Linux. Também criei uma [versão do ambiente baseado no LXQT](https://github.com/TrudeEH/LXQT-desktop), que não foi mantida por muito tempo, pois rapidamente começei a desenvolver a versão 3 do sistema.
 Também realizei diversos [testes com o OpenBox](https://github.com/TrudeEH/Openbox-desktop) e terminei a versão 3 do sistema, que infelizmente foi perdida com o tempo. Finalmente, descobri algo que mudou o projeto completamente: o DWM. O DWM parecia tudo o que procurava: Um gestor de janelas simples, extremamente leve e altamente extensível. Não demorou muito até o tentar utilizar, mas sem sucesso, devido à complexidade do código fonte escrito em C.
 Passei o resto do ano a estudar C, adicionar alguns componentes e desenvolver um instalador universal.
 Finalmente, publiquei duas versões do ambiente: [TruDE-1](https://github.com/TrudeEH/TruDE-old), ainda baseado no AwesomeWM, a 20 de agosto de 2021 e [TruDE-2](https://github.com/TrudeEH/TruDE-old2), a 30 de novembro do mesmo ano.
@@ -422,6 +449,10 @@ Quando o Wayland atingir a maturidade, XPrism será reconstruído para funcionar
 
 - Maior conhecimento de low level e C
 - Transição para Wayland
+
+## Contribuidores
+- **JCionx** (Ajuda com o README e testes beta)
+- **RevenXMaster** *aka* Henrique Esteves (Testes beta / GitHub issues)
 
 ## Agradecimentos finais
 Este projeto não seria possível sem o código base fornecido pela equipa Suckless e outros projetos da comunidade open-source. Além disso, o tempo de aulas do curso permitiram testar e corrigir erros que, de outra forma poderiam passar despercebidos. E, por fim, familiares e amigos forneceram o apoio necessário para o projeto ser desenvolvido.
