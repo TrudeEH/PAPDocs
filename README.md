@@ -252,9 +252,11 @@ O GitHub foi bastante utilizado durante o desenvolvimento do XPrism, e serve com
 XPrism Web é o site official do projeto. Serve como hub de informação e está hospedado no seu próprio repositório do GitHub. Todo o código do site está licensiado debaixo da mesma licensa do projeto original (GPL-3). Também é a página inicial do projeto do Henrique Esteves, que desenvolveu aplicações que podem ser integradas com o XPrism.
 
 **Computadores / Televisões:**
+
 ![web](images/webStart.png)
 
 **Telemovéis / *Tablets***
+
 ![phone](images/webPhone.png)
 
 #### Construção do site
